@@ -1,0 +1,16 @@
+{
+	"name": "dna-rna-protein",
+	"version": "1.0.0",
+	"description": "",
+	"main": "src/index.js",
+	"scripts": {
+		"dev:webpack": "webpack-dev-server --mode development --color",
+		"build:webpack": "webpack --mode production"
+	},
+  "dependencies": {
+		"react": "^16.8.6",
+		"react-dom": "^16.8.6"
+  },
+	"author": "alan campora",
+	"license": "ISC"
+}
