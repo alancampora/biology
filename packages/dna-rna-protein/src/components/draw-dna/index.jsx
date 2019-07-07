@@ -3,42 +3,64 @@ import Chain from '../chain/index.jsx';
 import { StyledDNAWrapper } from './styled';
 
 const nitrogenousBasesMapper = {
-	T: 'A',
-	A: 'T',
-	C: 'G',
-	G: 'C',
+	T: {
+		self: 'T',
+		opposite: 'A',
+		connections: 2,
+	},
+	A: {
+		self: 'A',
+		opposite: 'T',
+		connections: 2,
+	},
+	C: {
+		self: 'C',
+		opposite: 'G',
+		connections: 3,
+	},
+	G: {
+		self: 'G',
+		opposite: 'C',
+		connections: 3,
+	},
 };
 
-function transformChains(baseChain, setReverseChain, mapper) {
-	const reverseChain = baseChain
-		.split('')
-		.map(base => mapper[base.toUpperCase()])
-		.join()
-		.replace(/,/g, '');
-
-	setReverseChain(reverseChain);
+function transformChain(baseChain, setChain, mapper, getBase) {
+	setChain(
+		baseChain
+			.split('')
+			.map(base => mapper[base.toUpperCase()])
+			.map(getBase),
+	);
 }
 
-function useDna(dna35, mapper) {
-	const [dna53, setDna53] = useState('');
+function useDna(baseDnaString, mapper) {
+	const [baseChain, setBaseChain] = useState([]);
+	const [oppositeChain, setOppositeChain] = useState([]);
 
 	useEffect(
 		() => {
-			if (!dna35) return;
-			transformChains(dna35, setDna53, mapper);
+			transformChain(baseDnaString, setBaseChain, mapper, element => ({
+				base: element.self,
+				connections: element.connections,
+			}));
+			transformChain(baseDnaString, setOppositeChain, mapper, element => ({
+				base: element.opposite,
+				connections: element.connections,
+			}));
 		},
-		[dna35],
+		[baseDnaString],
 	);
 
-	return [dna53];
+	return [baseChain, oppositeChain];
 }
 
 const ChainDrawer = ({ dna }) => {
-	const [dna53] = useDna(dna, nitrogenousBasesMapper);
+	const [dna35, dna53] = useDna(dna, nitrogenousBasesMapper);
 
 	return (
 		<StyledDNAWrapper>
-			<Chain chain={dna} isTop={true} />
+			<Chain chain={dna35} isTop={true} />
 			<Chain chain={dna53} isTop={false} />
 		</StyledDNAWrapper>
 	);

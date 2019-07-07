@@ -7,11 +7,11 @@ import {
 } from './styled';
 
 const Chain = ({ chain, isTop }) => (
-	<StyledChainContainer>
+  console.log('chain:', chain) || <StyledChainContainer>
 		{isTop && <StyledChain />}
 		<StyledNitroBaseContainer>
-			{chain.split('').map(element => (
-				<StyledNitroBase> {element} </StyledNitroBase>
+			{chain && chain.map(element => (
+				<StyledNitroBase> {element.base.toUpperCase()} </StyledNitroBase>
 			))}
 		</StyledNitroBaseContainer>
 		{!isTop && <StyledChain />}
