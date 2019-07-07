@@ -10,12 +10,12 @@ const Base = ({ element, isTop = true }) => (
 	<div>
 		{isTop && (
 			<>
-				<StyledNitroBase> {element.base.toUpperCase()} </StyledNitroBase>
+				<StyledNitroBase color={element.color}>
+					{' '}
+					{element.base.toUpperCase()}{' '}
+				</StyledNitroBase>
 				<StyledWrapperConnection>
-					{repeat(
-						<StyledConnection color={element.color} />,
-						element.connections,
-					)}
+					{repeat(<StyledConnection />, element.connections)}
 				</StyledWrapperConnection>
 			</>
 		)}
@@ -28,7 +28,10 @@ const Base = ({ element, isTop = true }) => (
 					)}
 				</StyledWrapperConnection>
 
-				<StyledNitroBase> {element.base.toUpperCase()} </StyledNitroBase>
+				<StyledNitroBase color={element.color}>
+					{' '}
+					{element.base.toUpperCase()}{' '}
+				</StyledNitroBase>
 			</>
 		)}
 	</div>

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledNitroBase = styled.div`
+	background: ${props => props.color};
 	padding: 10px;
-	border: 1px solid black;
   border-radius: 10px;
 	margin: 10px;
 	max-width: 10px;
@@ -10,14 +10,15 @@ export const StyledNitroBase = styled.div`
 `;
 
 export const StyledConnection = styled.div`
-	background: ${props => props.color};
+	background: #42424252;
 	flex: 1;
 	height: 10px;
-	width: 5px;
+	max-width: 3px;
 	margin: 0 1px;
 `;
 export const StyledWrapperConnection = styled.div`
 	display: flex;
 	align-items: center;
+  justify-content:center;
 	margin: 0 10px;
 `;

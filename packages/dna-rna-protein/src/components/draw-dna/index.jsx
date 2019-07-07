@@ -7,25 +7,25 @@ const nitrogenousBasesMapper = {
 		self: 'T',
 		opposite: 'A',
 		connections: 2,
-		color: 'red',
+		color: '#fdf3b8',
 	},
 	A: {
 		self: 'A',
 		opposite: 'T',
 		connections: 2,
-		color: 'red',
+		color: '#f8c898',
 	},
 	C: {
 		self: 'C',
 		opposite: 'G',
 		connections: 3,
-		color: 'green',
+		color: '#c9e0af',
 	},
 	G: {
 		self: 'G',
 		opposite: 'C',
 		connections: 3,
-		color: 'green',
+		color: '#c8e9f2',
 	},
 };
 
