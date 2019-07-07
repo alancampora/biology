@@ -7,10 +7,10 @@
 		"dev:webpack": "webpack-dev-server --mode development --color",
 		"build:webpack": "webpack --mode production"
 	},
-  "dependencies": {
+	"dependencies": {
 		"react": "^16.8.6",
 		"react-dom": "^16.8.6"
-  },
+	},
 	"author": "alan campora",
 	"license": "ISC"
 }

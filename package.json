@@ -1,6 +1,8 @@
 {
 	"private": true,
-	"workspaces": ["packages/*"],
+	"workspaces": [
+		"packages/*"
+	],
 	"name": "biology",
 	"version": "1.0.0",
 	"description": "",
@@ -8,7 +10,8 @@
 	"dependencies": {
 		"proptypes": "^1.1.0",
 		"react": "^16.8.6",
-		"react-dom": "^16.8.6"
+		"react-dom": "^16.8.6",
+		"styled-components": "^4.3.2"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.5.0",
@@ -27,7 +30,7 @@
 		"build": "lerna run build:webpack",
 		"bootstrap": "lerna bootstrap",
 		"start": "webpack-dev-server --open --mode development",
-    "dev": "lerna run dev:webpack"
+		"dev": "lerna run dev:webpack"
 	},
 	"author": "alan campora",
 	"license": "ISC"
