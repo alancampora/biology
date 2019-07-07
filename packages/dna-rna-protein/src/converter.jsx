@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-	StyledNitroBase,
-	StyledNitroBaseContainer,
-	StyledChainContainer,
-	StyledChain,
-	StyledDNAWrapper,
-} from './styled';
+import DrawDNA from './components/draw-dna/index.jsx';
 
 const labels = {
 	en: {
@@ -32,7 +26,7 @@ function DNAToRNA(DNA, setRNA) {
 }
 
 function useDNAtoRNA() {
-	const [RNA, setRNA] = useState('TAC TAC TAC');
+	const [RNA, setRNA] = useState('');
 	const [DNA, setDNA] = useState('');
 
 	useEffect(
@@ -50,42 +44,23 @@ const convert = setDNA => e => {
 	setDNA(dna);
 };
 
-const DrawDNA = ({ dna, arn }) => {
-	return (
-		<StyledDNAWrapper>
-			<StyledChainContainer>
-				<StyledChain />
-				<StyledNitroBaseContainer>
-					{dna.split('').map(element => (
-						<StyledNitroBase> {element} </StyledNitroBase>
-					))}
-				</StyledNitroBaseContainer>
-			</StyledChainContainer>
-
-			<StyledChainContainer>
-				<StyledNitroBaseContainer>
-					{arn.split('').map(element => (
-						<StyledNitroBase> {element} </StyledNitroBase>
-					))}
-				</StyledNitroBaseContainer>
-				<StyledChain />
-			</StyledChainContainer>
-		</StyledDNAWrapper>
-	);
-};
-
 const Converter = () => {
 	const [DNA, RNA, setDNA] = useDNAtoRNA();
 
 	return (
 		<div>
 			<form>
-				<input type="dna" name="dna" value={DNA} onChange={convert(setDNA)} />
+				<input
+					type="dna"
+					name="dna"
+					autocomplete="off"
+					value={DNA}
+					onChange={convert(setDNA)}
+				/>
 				<br />
 				<label> {` ${labels.en.RNA} ${RNA}`} </label>
 			</form>
-
-			<DrawDNA dna={DNA} arn={RNA} />
+			<DrawDNA dna={DNA} />
 		</div>
 	);
 };
