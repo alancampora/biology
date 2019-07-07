@@ -8,8 +8,8 @@ const ChainDrawer = ({ dna, mapper }) => {
 
 	return (
 		<StyledDNAWrapper>
-			<Chain chain={baseChain} isTop={true} />
-			<Chain chain={reverseChain} isTop={false} />
+      <Chain from="'5" to="'3" chain={baseChain} isTop={true} />
+			<Chain from="'3" to="'5" chain={reverseChain} isTop={false} />
 		</StyledDNAWrapper>
 	);
 };

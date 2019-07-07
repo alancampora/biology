@@ -6,21 +6,31 @@ import {
 	StyledNitroBaseContainer,
 	StyledChainContainer,
 	StyledChain,
+	StyledLine,
+	StyledWrapperLine,
 } from './styled';
 
-const Chain = ({ chain, isTop = true }) => (
-	<StyledChainContainer>
-		{isTop && <StyledChain />}
+const Line = ({ from, to }) => (
+	<StyledWrapperLine>
+		<StyledLine>{from}</StyledLine>
+		<StyledChain />
+		<StyledLine>{to}</StyledLine>
+	</StyledWrapperLine>
+);
 
-		<StyledNitroBaseContainer>
-			{chain &&
-				chain.map((element, key) => (
+const Chain = ({ chain, isTop = true, from, to }) =>
+	chain && (
+		<StyledChainContainer>
+			{isTop && <Line from={from} to={to} />}
+
+			<StyledNitroBaseContainer>
+				{chain.map((element, key) => (
 					<Base key={key} element={element} isTop={isTop} />
 				))}
-		</StyledNitroBaseContainer>
+			</StyledNitroBaseContainer>
 
-		{!isTop && <StyledChain />}
-	</StyledChainContainer>
-);
+			{!isTop && <Line from={from} to={to} />}
+		</StyledChainContainer>
+	);
 
 export default Chain;
