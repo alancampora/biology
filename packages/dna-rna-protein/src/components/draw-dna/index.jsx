@@ -7,21 +7,25 @@ const nitrogenousBasesMapper = {
 		self: 'T',
 		opposite: 'A',
 		connections: 2,
+		color: 'red',
 	},
 	A: {
 		self: 'A',
 		opposite: 'T',
 		connections: 2,
+		color: 'red',
 	},
 	C: {
 		self: 'C',
 		opposite: 'G',
 		connections: 3,
+		color: 'green',
 	},
 	G: {
 		self: 'G',
 		opposite: 'C',
 		connections: 3,
+		color: 'green',
 	},
 };
 
@@ -43,10 +47,12 @@ function useDna(baseDnaString, mapper) {
 			transformChain(baseDnaString, setBaseChain, mapper, element => ({
 				base: element.self,
 				connections: element.connections,
+				color: element.color,
 			}));
 			transformChain(baseDnaString, setOppositeChain, mapper, element => ({
 				base: element.opposite,
 				connections: element.connections,
+				color: element.color,
 			}));
 		},
 		[baseDnaString],
