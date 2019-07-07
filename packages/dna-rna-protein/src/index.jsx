@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { StyledTitle } from './styled';
+import { StyledTitle, GlobalStyles } from './styled';
 import Converter from './converter.jsx';
 
 /* DNA is composed by nitrogenous bases
@@ -21,6 +21,7 @@ RNA: U A C G U A U C C
 
 const App = () => (
 	<div>
+    <GlobalStyles />
 		<Converter />
 	</div>
 );

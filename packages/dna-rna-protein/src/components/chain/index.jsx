@@ -8,20 +8,19 @@ import {
 	StyledChain,
 } from './styled';
 
-const Chain = ({ chain, isTop = true }) =>
-	console.log('chain:', chain, 'isTop:', isTop) || (
-		<StyledChainContainer>
-			{isTop && <StyledChain />}
+const Chain = ({ chain, isTop = true }) => (
+	<StyledChainContainer>
+		{isTop && <StyledChain />}
 
-			<StyledNitroBaseContainer>
-				{chain &&
-					chain.map((element, key) => (
-						<Base key={key} element={element} isTop={isTop} />
-					))}
-			</StyledNitroBaseContainer>
+		<StyledNitroBaseContainer>
+			{chain &&
+				chain.map((element, key) => (
+					<Base key={key} element={element} isTop={isTop} />
+				))}
+		</StyledNitroBaseContainer>
 
-			{!isTop && <StyledChain />}
-		</StyledChainContainer>
-	);
+		{!isTop && <StyledChain />}
+	</StyledChainContainer>
+);
 
 export default Chain;
