@@ -2,30 +2,30 @@ import React, { useState, useEffect } from 'react';
 import Chain from '../chain/index.jsx';
 import { StyledDNAWrapper } from './styled';
 
-const dna35_dna53 = {
+const nitrogenousBasesMapper = {
 	T: 'A',
 	A: 'T',
 	C: 'G',
 	G: 'C',
 };
 
-function dna35ToDna53(dna35, setDna53) {
-	const dna53 = dna35
+function transformChains(baseChain, setReverseChain, mapper) {
+	const reverseChain = baseChain
 		.split('')
-		.map(base => dna35_dna53[base.toUpperCase()])
+		.map(base => mapper[base.toUpperCase()])
 		.join()
 		.replace(/,/g, '');
 
-	setDna53(dna53);
+	setReverseChain(reverseChain);
 }
 
-function useDna(dna35) {
+function useDna(dna35, mapper) {
 	const [dna53, setDna53] = useState('');
 
 	useEffect(
 		() => {
 			if (!dna35) return;
-			dna35ToDna53(dna35, setDna53);
+			transformChains(dna35, setDna53, mapper);
 		},
 		[dna35],
 	);
@@ -33,8 +33,8 @@ function useDna(dna35) {
 	return [dna53];
 }
 
-const DrawDNA = ({ dna }) => {
-	const [dna53] = useDna(dna);
+const ChainDrawer = ({ dna }) => {
+	const [dna53] = useDna(dna, nitrogenousBasesMapper);
 
 	return (
 		<StyledDNAWrapper>
@@ -44,4 +44,4 @@ const DrawDNA = ({ dna }) => {
 	);
 };
 
-export default DrawDNA;
+export default ChainDrawer;
