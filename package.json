@@ -9,6 +9,7 @@
 	"main": "index.js",
 	"dependencies": {
 		"proptypes": "^1.1.0",
+		"ramda": "^0.26.1",
 		"react": "^16.8.6",
 		"react-dom": "^16.8.6",
 		"styled-components": "^4.3.2"
