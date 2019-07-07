@@ -1,66 +1,82 @@
 import React, { useState, useEffect } from 'react';
-import DrawDNA from './components/draw-dna/index.jsx';
+import ChainDrawer from './components/chain-drawer/index.jsx';
 
-const labels = {
-	en: {
-		title: 'Welcome to DNA conversion',
-		DNA: 'DNA',
-		RNA: 'RNA',
+
+const DNA_MAPPER = {
+	T: {
+		self: 'T',
+		opposite: 'A',
+		connections: 2,
+		color: '#fdf3b8',
+	},
+	A: {
+		self: 'A',
+		opposite: 'T',
+		connections: 2,
+		color: '#f8c898',
+	},
+	C: {
+		self: 'C',
+		opposite: 'G',
+		connections: 3,
+		color: '#c9e0af',
+	},
+	G: {
+		self: 'G',
+		opposite: 'C',
+		connections: 3,
+		color: '#c8e9f2',
 	},
 };
 
-const ADN_ARN = {
-	T: 'A',
-	A: 'U',
-	C: 'G',
-	G: 'C',
+const RNA_MAPPER = {
+	T: {
+		self: 'T',
+		opposite: 'A',
+		connections: 2,
+		color: '#fdf3b8',
+	},
+	A: {
+		self: 'A',
+		opposite: 'U',
+		connections: 2,
+		color: '#f8c898',
+	},
+	C: {
+		self: 'C',
+		opposite: 'G',
+		connections: 3,
+		color: '#c9e0af',
+	},
+	G: {
+		self: 'G',
+		opposite: 'C',
+		connections: 3,
+		color: '#c8e9f2',
+	},
+  U:{
+		self: 'U',
+		opposite: 'A',
+		connections: 2,
+		color: '#fdf3b8',
+  }
 };
 
-function DNAToRNA(DNA, setRNA) {
-	const RNA = DNA.split('')
-		.map(base => ADN_ARN[base.toUpperCase()])
-		.join()
-		.replace(/,/g, '');
-
-	setRNA(RNA);
-}
-
-function useDNAtoRNA() {
-	const [RNA, setRNA] = useState('');
-	const [DNA, setDNA] = useState('');
-
-	useEffect(
-		() => {
-			DNAToRNA(DNA, setRNA);
-		},
-		[DNA],
-	);
-
-	return [DNA, RNA, setDNA];
-}
-
-const convert = setDNA => e => {
-	const dna = e.target.value.trim();
-	setDNA(dna);
+const convert = setDna => e => {
+	setDna(e.target.value.trim());
 };
 
 const Converter = () => {
-	const [DNA, RNA, setDNA] = useDNAtoRNA();
+	const [dna, setDna] = useState('');
 
 	return (
 		<div>
 			<form>
-				<input
-					type="dna"
-					name="dna"
-					autocomplete="off"
-					value={DNA}
-					onChange={convert(setDNA)}
-				/>
+				<input autocomplete="off" value={dna} onChange={convert(setDna)} />
 				<br />
-				<label> {` ${labels.en.RNA} ${RNA}`} </label>
 			</form>
-			<DrawDNA dna={DNA} />
+			<ChainDrawer dna={dna} mapper={DNA_MAPPER}/>
+			<ChainDrawer dna={dna} mapper={RNA_MAPPER}/>
 		</div>
 	);
 };
