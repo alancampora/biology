@@ -44,15 +44,9 @@ function useDna(baseDnaString, mapper) {
 
 	useEffect(
 		() => {
-			transformChain(baseDnaString, setBaseChain, mapper, element => ({
-				base: element.self,
-				connections: element.connections,
-				color: element.color,
-			}));
+			transformChain(baseDnaString, setBaseChain, mapper, element => element);
 			transformChain(baseDnaString, setOppositeChain, mapper, element => ({
-				base: element.opposite,
-				connections: element.connections,
-				color: element.color,
+				...mapper[element.opposite],
 			}));
 		},
 		[baseDnaString],
@@ -63,6 +57,8 @@ function useDna(baseDnaString, mapper) {
 
 const ChainDrawer = ({ dna }) => {
 	const [dna35, dna53] = useDna(dna, nitrogenousBasesMapper);
+  console.log('35:',dna35);
+  console.log('53:',dna53);
 
 	return (
 		<StyledDNAWrapper>
