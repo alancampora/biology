@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ChainDrawer from './components/chain-drawer/index.jsx';
+import ChainBuilder from './components/chain-builder/index.jsx';
 
 
 const DNA_MAPPER = {
@@ -72,11 +72,13 @@ const Converter = () => {
 	return (
 		<div>
 			<form>
-				<input autocomplete="off" value={dna} onChange={convert(setDna)} />
+				DNA 3'5' Chain: <input autocomplete="off" value={dna} onChange={convert(setDna)} />
 				<br />
 			</form>
-			<ChainDrawer dna={dna} mapper={DNA_MAPPER}/>
-			<ChainDrawer dna={dna} mapper={RNA_MAPPER}/>
+      <div> DNA chain </div>  
+			<ChainBuilder dna={dna} mapper={DNA_MAPPER}/>
+      <div> RNA chain </div>  
+			<ChainBuilder dna={dna} mapper={RNA_MAPPER}/>
 		</div>
 	);
 };
