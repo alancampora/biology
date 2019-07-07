@@ -6,35 +6,30 @@ import {
 	StyledWrapperConnection,
 } from './styled';
 
-const Base = ({ element, isTop = true }) =>
-	console.log(element) || (
-		<div>
-			{isTop ? (
-				<>
-					<StyledNitroBase color={element.color}>
-						{' '}
-						{element.self.toUpperCase()}{' '}
-					</StyledNitroBase>
-					<StyledWrapperConnection>
-						{repeat(<StyledConnection />, element.connections)}
-					</StyledWrapperConnection>
-				</>
-			) : (
-				<>
-					<StyledWrapperConnection>
-						{repeat(
-							<StyledConnection color={element.color} />,
-							element.connections,
-						)}
-					</StyledWrapperConnection>
+const Connection = ({ color, connections }) => (
+	<StyledWrapperConnection>
+		{repeat(<StyledConnection />, connections)}
+	</StyledWrapperConnection>
+);
 
-					<StyledNitroBase color={element.color}>
-						{' '}
-						{element.self.toUpperCase()}{' '}
-					</StyledNitroBase>
-				</>
-			)}
-		</div>
-	);
+const NitroBase = ({ color, name }) => (
+	<StyledNitroBase color={color}> {name.toUpperCase()} </StyledNitroBase>
+);
+
+const Base = ({ element, isTop = true }) => (
+	<div>
+		{isTop ? (
+			<>
+				<NitroBase color={element.color} name={element.self} />
+				<Connection connections={element.connections} />
+			</>
+		) : (
+			<>
+				<Connection connections={element.connections} />
+				<NitroBase color={element.color} name={element.self} />
+			</>
+		)}
+	</div>
+);
 
 export default Base;
