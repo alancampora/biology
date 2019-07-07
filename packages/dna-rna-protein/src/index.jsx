@@ -21,7 +21,6 @@ RNA: U A C G U A U C C
 
 const App = () => (
 	<div>
-		<StyledTitle> TITLE </StyledTitle>
 		<Converter />
 	</div>
 );
