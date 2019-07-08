@@ -5,12 +5,14 @@ export const StyledTitle = styled.div`
 	color: red;
 `;
 
+export const Wrapper = styled.div`
+	margin: 10px;
+`;
+
 export const GlobalStyles = createGlobalStyle`
   body {
     @import url('https://fonts.googleapis.com/css?family=Patrick+Hand|Sniglet');
     font-family: 'Sniglet', cursive;
     font-size: 1.2em;
   }
-`
-
-
+`;

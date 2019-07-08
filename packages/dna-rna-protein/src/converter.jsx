@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ChainBuilder from './components/chain-builder/index.jsx';
 import Form from './components/form/index.jsx';
 import Animation from './components/animation/index.jsx';
+import {Wrapper} from './styled';
 
 const DNA_MAPPER = {
 	T: {
@@ -71,7 +72,7 @@ const Converter = () => {
 	const [dna, setDna] = useState('');
 
 	return (
-		<div>
+		<Wrapper>
 			<Form label="DNA 3'5':" value={dna} onChange={convert(setDna)} />
 			{dna && (
 				<>
@@ -85,7 +86,7 @@ const Converter = () => {
 					/>
 				</>
 			)}
-		</div>
+		</Wrapper>
 	);
 };
 
