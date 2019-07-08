@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ChainBuilder from './components/chain-builder/index.jsx';
 import Form from './components/form/index.jsx';
+import Animation from './components/animation/index.jsx';
 
 const DNA_MAPPER = {
 	T: {
@@ -72,10 +73,18 @@ const Converter = () => {
 	return (
 		<div>
 			<Form label="DNA 3'5':" value={dna} onChange={convert(setDna)} />
-			<div> DNA </div>
-			<ChainBuilder dna={dna} mapper={DNA_MAPPER} />
-			<div> RNA </div>
-			<ChainBuilder dna={dna} mapper={RNA_MAPPER} />
+			{dna && (
+				<>
+					<div> DNA </div>
+					<ChainBuilder dna={dna} mapper={DNA_MAPPER} />
+					<div> RNA </div>
+					<ChainBuilder
+						dna={dna}
+						mapper={RNA_MAPPER}
+						animation={<Animation title="rna polymerase" />}
+					/>
+				</>
+			)}
 		</div>
 	);
 };

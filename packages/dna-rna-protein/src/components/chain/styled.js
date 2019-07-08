@@ -20,11 +20,21 @@ export const StyledWrapperLine = styled.div`
 	align-items: center;
 `;
 export const StyledLine = styled.div`
-    background: #6dd898;
-    border-radius: 50%;
-    padding: 5px;
-    height: 20px;
-    width: 20px;
-    z-index: 1;
-    text-align: center;
-`
+	background: #6dd898;
+	border-radius: 50%;
+	padding: 5px;
+	height: 20px;
+	width: 20px;
+	z-index: 1;
+	text-align: center;
+`;
+
+export const StyledSpacer = styled.div`
+	width: 50px;
+	height: 10px;
+`;
+
+export const StyledAnimation = styled.div`
+	display: flex;
+  position:absolute;
+`;

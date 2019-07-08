@@ -9,14 +9,14 @@ import {
 	ArmWrapper,
 	EyePoint,
 	Wrapper,
-  Scale,
-  Title,
+	Scale,
+	Title,
 } from './styled';
 
-const Animation = () => (
+const Animation = ({ title }) => (
 	<Scale>
 		<Wrapper>
-			<Title> ARN POLYMERASE </Title>
+			<Title> {title} </Title>
 			<Head>
 				<Eye>
 					<EyePoint />
