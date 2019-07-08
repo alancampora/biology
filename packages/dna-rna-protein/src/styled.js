@@ -7,8 +7,9 @@ export const StyledTitle = styled.div`
 
 export const GlobalStyles = createGlobalStyle`
   body {
-    @import url('https://fonts.googleapis.com/css?family=Patrick+Hand');
-    font-family: 'Patrick Hand', sans-serif;
+    @import url('https://fonts.googleapis.com/css?family=Patrick+Hand|Sniglet');
+    font-family: 'Sniglet', cursive;
+    font-size: 1.2em;
   }
 `
 

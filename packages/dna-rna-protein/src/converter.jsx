@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ChainBuilder from './components/chain-builder/index.jsx';
-
+import Form from './components/form/index.jsx';
 
 const DNA_MAPPER = {
 	T: {
@@ -54,12 +54,12 @@ const RNA_MAPPER = {
 		connections: 3,
 		color: '#c8e9f2',
 	},
-  U:{
+	U: {
 		self: 'U',
 		opposite: 'A',
 		connections: 2,
 		color: '#fdf3b8',
-  }
+	},
 };
 
 const convert = setDna => e => {
@@ -71,14 +71,11 @@ const Converter = () => {
 
 	return (
 		<div>
-			<form>
-				DNA 3'5' Chain: <input autocomplete="off" value={dna} onChange={convert(setDna)} />
-				<br />
-			</form>
-      <div> DNA chain </div>  
-			<ChainBuilder dna={dna} mapper={DNA_MAPPER}/>
-      <div> RNA chain </div>  
-			<ChainBuilder dna={dna} mapper={RNA_MAPPER}/>
+			<Form label="DNA 3'5':" value={dna} onChange={convert(setDna)} />
+			<div> DNA </div>
+			<ChainBuilder dna={dna} mapper={DNA_MAPPER} />
+			<div> RNA </div>
+			<ChainBuilder dna={dna} mapper={RNA_MAPPER} />
 		</div>
 	);
 };
