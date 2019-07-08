@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ChainBuilder from './components/chain-builder/index.jsx';
 import Form from './components/form/index.jsx';
-import Animation from './components/animation/index.jsx';
+import Animation from './components/bubble/index.jsx';
 import {Wrapper} from './styled';
 
 const DNA_MAPPER = {
