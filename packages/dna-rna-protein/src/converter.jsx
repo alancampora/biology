@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ChainBuilder from './components/chain-builder/index.jsx';
 import Form from './components/form/index.jsx';
 import Animation from './components/bubble/index.jsx';
-import {Wrapper} from './styled';
+import { Wrapper } from './styled';
+import * as LabelClient from './locale/index.jsx';
 
 const DNA_MAPPER = {
 	T: {
@@ -69,11 +70,16 @@ const convert = setDna => e => {
 };
 
 const Converter = () => {
+	const i18n = useContext(LabelClient.Context);
 	const [dna, setDna] = useState('');
 
 	return (
 		<Wrapper>
-			<Form label="DNA 3'5':" value={dna} onChange={convert(setDna)} />
+			<Form
+				label={`${i18n['DNA']} ${i18n['3']} ${i18n['5']}`}
+				value={dna}
+				onChange={convert(setDna)}
+			/>
 			{dna && (
 				<>
 					<div> DNA </div>
@@ -82,7 +88,7 @@ const Converter = () => {
 					<ChainBuilder
 						dna={dna}
 						mapper={RNA_MAPPER}
-						animation={<Animation title="rna polymerase" />}
+						animation={<Animation title={`${i18n['RNA_POLYMERASE']}`} />}
 					/>
 				</>
 			)}
